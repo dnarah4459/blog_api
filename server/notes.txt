@@ -1,0 +1,23 @@
+JSON: JavaScript Object Notation. 
+
+JSON is a data representation format. 
+
+Used to transfer data between client and server. 
+
+JSON is an important concept. JSON is just a superset of JavaScript. Integrates nicely with JavaScript. 
+
+
+JSON is a lightweight data-interchage format that is easy for humans to reand and write and easy for machines 
+
+JSON is a lightweigth data interchange format that's easy for humand to read and write
+
+
+JSON can be an object. 
+JSON can be an object. 
+JSON can be an object. 
+
+keys are alawsy string enclosed in doube 
+
+JSON is a lightweight data interahcnge or
+
+an objec ti sessent

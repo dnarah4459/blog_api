@@ -1,0 +1,79 @@
+At a Prisma ORM level, a connection between two models is awalys represented by a relation field on each side of the relation. 
+At a Prisma ORM level, a connection between two models is always represened by a relation field on each side of the relation. 
+
+the foreign key that connects both of the models only exissts on one side of the model. 
+In SQL, you use a Foreign key to create a relation between two tables. 
+
+Three Differnt Types of Relations in Prisma ORM: 
+
+
+A page reload effectively means the browser is throwing away the current page and replacing it with a new one form teh server, losing any i memory JavScript state oyu had
+
+After the page reloads you are essentially starting fresh with whatever the server sends back. 
+After the page reloads you are essentially starting fresh with whatever the server sends back. 
+After the page reloads, you are essentially starting fresh with whatever the server sends back. 
+After the page relaods you are essentially starting
+
+After the inital load, the page does not relaod when the 
+
+it is going to disacrd the current web page and requests a complete l new page
+
+A page reload is when the browser discards the current web page and requests a complete new version of the pae
+
+
+
+When a user first vists your site, the browser sends an HTTP request to the server for the root URL
+The server responds with a single HTML page that includes a div 
+The server responds witha  single HMTL page that includes, the necessary JavaScript files (the bundled React app and its dependencies)
+
+
+The React app is bootstrapped inside the div element in the HTML page. 
+When the user first visita the page, the server sends the init HTML page and the JavaScript bundle that contains your React app. 
+
+the broswer does not request the entire new HTML pages from the server when naviagtion, only nexcaary data like JSON is fetched is needed 
+
+
+A page reload or page refresh is when the browser discards the current web page (HTML, CSS, and JavaScript state) and requests/displays a complelt new verison of the page ua
+
+A page reload is when the browser discards the current web pae
+A page reload
+
+In a classic HTML form submission, the browser sends the form data to the server, waits fro a response, adn then replaces the current page with whatever the server retruns (often a new HTML pag)
+
+a page reload means the browser is efectively throwing away the current pagr and replacing it with a enw one frm the sefver laoidng any in memory javascritpt state oyu had
+
+When a reload occurs, the browser discards (throws aaway) everything about the current page, 
+Requests a fresh versino fo the page form the server 
+
+After the page reloads, you are essentially starting freshw ith whatever the serve sends back
+
+
+teh api can send back anything to the frontend. it does not matter
+
+A REST API is an applicatino programming itner
+
+REST API should acept jSON 
+
+JSON
+
+Two general ways to interact with the offical OpenAI node.js client library and using its buil tin method to interact with the Open AI API. 
+The client library simplifies things by abstracting some
+
+
+
+
+Everything is bundles up so you dont have to keep on making requests to the server. 
+
+Everything is bundles up so you do not have to keep on making requests t te
+
+
+The OpenAI npm pacakge is essentially a wrapper around HTTP requests. 
+The OpenAI npm package i eesentially a wrapper around HTTP requsts. 
+
+
+The AI assistant plugin allows a user to interact with registered AI APIs by 
+
+We can never do database queries on the client side. 
+
+we would have to pass the database connection URL on the client side so the browser can connet with it. not good. 
+or have the database connectino URL on the server side. 
