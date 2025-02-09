@@ -165,60 +165,22 @@ main.get("/api/all-posts-user", verifyToken, async (req, res) => {
             select: {
               username: true,
               firstName: true,
-              lastName: true
-            }
-          },       
+              lastName: true,
+            },
+          },
           comments: {
             include: {
               User: {
                 select: {
                   username: true,
                   firstName: true,
-                  lastName: true
-                } 
-              }
-            }
+                  lastName: true,
+                },
+              },
+            },
           },
-        }
+        },
       });
-      res.json(posts); 
-    });
-  } catch (error) {
-    console.error("Server Error:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-
-
-main.get("/api/all-posts", verifyToken, async (req, res) => {
-  try {
-    jwt.verify(req.token, process.env.JWT_SECRET_KEY, async (err, authData) => {
-      const posts = await prisma.post.findMany({
-        where: {
-          userId
-        },
-        include: {
-          comments: {
-            include: {
-              User: {
-                select: {
-                  username: true,
-                  firstName: true,
-                  lastName: true
-                }
-              }
-            }
-          },
-          User: {
-            select: {
-              username: true
-            }
-          }
-        },
-        orderBy: {
-          id: 'desc'
-        }
-       });
       res.json(posts);
     });
   } catch (error) {
@@ -227,18 +189,107 @@ main.get("/api/all-posts", verifyToken, async (req, res) => {
   }
 });
 
+main.get("/test", (req, res) => {
+  res.send("ewifhr");
+});
+
+main.get("/api/all-posts", verifyToken, async (req, res) => {
+  try {
+    jwt.verify(req.token, process.env.JWT_SECRET_KEY, async (err, authData) => {
+      const posts = await prisma.post.findMany({
+        include: {
+          comments: {
+            include: {
+              User: {
+                select: {
+                  username: true,
+                  firstName: true,
+                  lastName: true,
+                },
+              },
+            },
+          },
+          User: {
+            select: {
+              username: true,
+              firstName: true,
+              lastName: true,
+            },
+          },
+        },
+        orderBy: {
+          id: "desc",
+        },
+      });
+      res.json(posts);
+    });
+  } catch (error) {
+    console.error("Server Error:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+//post route to accept a comment to the blog to add
+main.post("/api/add-comment/:blogId", verifyToken, async (req, res) => {
+  try {
+    jwt.verify(req.token, process.env.JWT_SECRET_KEY, async (err, authdata) => {
+      const { title, content } = req.body;
+      const blogId = parseInt(req.params.blogId);
+      const userId = parseInt(authdata.userId);
+      await prisma.comment.create({
+        data: {
+          title,
+          content,
+          userId,
+          postId: blogId,
+        },
+      });
+
+      const posts = await prisma.post.findMany({
+        include: {
+          comments: {
+            include: {
+              User: {
+                select: {
+                  username: true,
+                  firstName: true,
+                  lastName: true,
+                },
+              },
+            },
+          },
+          User: {
+            select: {
+              username: true,
+              firstName: true,
+              lastName: true,
+            },
+          },
+        },
+        orderBy: {
+          id: "desc",
+        },
+      })
+
+      res.json(posts); 
+    });
+  } catch (error) {
+    console.error("Server Error:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 
 main.delete("/api/delete-post", verifyToken, async (req, res) => {
   try {
     jwt.verify(req.token, process.env.JWT_SECRET_KEY, async (err, authData) => {
-      const { postIdToDelete } = req.body; 
-      const userId = parseInt(authData.userId); 
+      const { postIdToDelete } = req.body;
+      const userId = parseInt(authData.userId);
       const postToDelete = await prisma.post.delete({
         where: {
-          id: parseInt(postIdToDelete)
-        }
-      })
-      
+          id: parseInt(postIdToDelete),
+        },
+      });
+
       const newListOfPosts = await prisma.post.findMany({
         where: { userId },
         include: {
@@ -246,21 +297,21 @@ main.delete("/api/delete-post", verifyToken, async (req, res) => {
             select: {
               username: true,
               firstName: true,
-              lastName: true
-            }
-          },       
+              lastName: true,
+            },
+          },
           comments: {
             include: {
               User: {
                 select: {
                   username: true,
                   firstName: true,
-                  lastName: true
-                } 
-              }
-            }
+                  lastName: true,
+                },
+              },
+            },
           },
-        }
+        },
       });
       res.json(newListOfPosts);
     });
